@@ -121,16 +121,10 @@ void Light::handleAttention(const LightState& state) {
 void Light::setNotificationLED() {
     int32_t adjusted_brightness = MAX_INPUT_BRIGHTNESS;
     LightState state;
-#ifdef LED_BLN_NODE
-    bool bln = false;
-#endif
 
     if (mNotificationState.color & COLOR_MASK) {
         adjusted_brightness = LED_BRIGHTNESS_NOTIFICATION;
         state = mNotificationState;
-#ifdef LED_BLN_NODE
-        bln = true;
-#endif
     } else if (mAttentionState.color & COLOR_MASK) {
         adjusted_brightness = LED_BRIGHTNESS_ATTENTION;
         state = mAttentionState;
@@ -159,12 +153,6 @@ void Light::setNotificationLED() {
     ss << std::hex << "0x" << std::setfill('0') << std::setw(8) << state.color << std::dec
        << " " << state.flashOnMs << " " << state.flashOffMs;
     set(LED_BLINK_NODE, ss.str());
-
-#ifdef LED_BLN_NODE
-    if (bln) {
-        set(LED_BLN_NODE, (state.color & COLOR_MASK) ? 1 : 0);
-    }
-#endif
 }
 
 Return<void> Light::getSupportedTypes(getSupportedTypes_cb _hidl_cb) {

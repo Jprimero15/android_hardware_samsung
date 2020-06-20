@@ -34,12 +34,18 @@
         <activity
             android:name=".SamsungDozeActivity"
             android:label="@string/ambient_display_title"
-            android:theme="@android:style/Theme.DeviceDefault.Settings">
+            android:theme="@style/Theme.Main">
             <intent-filter>
-                <action android:name="com.android.settings.device.DOZE_SETTINGS" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
+                <action android:name="com.android.settings.action.EXTRA_SETTINGS" /> 
+           </intent-filter>
+            <meta-data
+                android:name="com.android.settings.category"
+                android:value="com.android.settings.category.ia.display" />
+            <meta-data
+                android:name="com.android.settings.summary"
+                android:value="@string/ambient_display_summary" />
         </activity>
 
     </application>
 </manifest>
+ 

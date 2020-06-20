@@ -16,7 +16,7 @@ LOCAL_STATIC_ANDROID_LIBRARIES := \
     androidx.core_core \
     androidx.preference_preference
 
-LOCAL_OVERRIDES_PACKAGES := CustomDoze
+LOCAL_OVERRIDES_PACKAGES := ParanoidDoze
 
 LOCAL_PROGUARD_FLAG_FILES := proguard.flags
 
